@@ -12,5 +12,13 @@ export default defineConfig({
         rewrite:(path) =>path.replace(/^\/api/, "")
       }
     }
+  },
+  css:{
+    //css预处理
+    preprocessorOptions:{
+      scss:{
+        
+      }
+    }
   }
 })

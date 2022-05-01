@@ -1,5 +1,77 @@
-body{
+#root{
+  height: 100%;
+  width: 100%;
+}
+body {
   font-size: 14px;
   font-family: "微软雅黑";
   background: #efefef;
+  .app {
+    height: 100%;
+    header {
+      height: 70px;
+      background: #fff;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .logo {
+        display: block;
+        height: 100%;
+      }
+      .right{
+        .ant-dropdown-trigger{
+          display: block;
+          padding: 14px 0;
+          color: rgba(0,0,0,0.85);
+          &:hover{
+            color:#1890ff
+          }
+        }
+        .avatar{
+          display: block;
+          width: 40px;
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+}
+      }
+    }
+    .layout-Content{
+      flex-direction:row;
+      .ant-layout-aside{
+        background: #001529;
+        width: 160px;
+        flex: none;
+        height: 100%;
+        .ant-menu-dark.ant-menu-inline{
+          .ant-menu-item{
+            height: 50px;
+            margin: 0;
+          }
+        }
+      }
+    }
+
+    footer {
+      height: 70px;
+      line-height: 70px;
+      background: #001529;
+      color: #fff;
+      text-align: center;
+    }
+
+    .ant-row-rtl #components-layout-demo-top-side-2 .logo {
+      float: right;
+      margin: 16px 0 16px 24px;
+    }
+    .ant-layout.ant-layout-has-sider {
+      flex: 1;
+    } 
+    .content-background {
+      background: #fff;
+    }
+  }
 }

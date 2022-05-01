@@ -1,26 +1,51 @@
-import React from "react";
-import "./login.min.css";
+import React,{useState,useEffect} from "react";
+import "./scss/login.min.css";
 import logoImg from "../assets/logo.png";
-import { Form, Input, Button,message } from "antd";
+import { Form, Input, Button, message } from "antd";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
-import { Link ,useNavigate} from "react-router-dom";
-import { RegisterApi } from "../request/api";
+import { Link, useNavigate } from "react-router-dom";
+import { RegisterApi,LoginApi } from "../request/api";
 
 export default function Register() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+  const [userName,setUsername] = useState('');
+  const [validateStatus,setValidateStatus] = useState('')
+  const [helpStatus,setHelpstatus] = useState('');
+  useEffect(()=>{
+    if(userName){
+      LoginApi({username:userName,password:"12346"})
+      .then(res=>{
+        if(res.errCode === 1 && res.message === "该账号不存在"){
+            setValidateStatus("success");
+            setHelpstatus("")
+        }else{
+          setValidateStatus('error')
+          setHelpstatus("账号已存在")
+          console.log(res);
+        }
+        
+        
+      })
+    }
+
+    // console.log(userName);
+  },[userName])
   const onFinish = (values) => {
+
     RegisterApi({
-      username:values.username,
-      password:values.password
-    }).then(res=>{
-      if(res.errCode === 0){
-        message.success(res.message+",跳转至登录页");
+      username: values.username,
+      password: values.password,
+    }).then((res) => {
+      if (res.errCode === 0) {
+        message
+          .loading("正在加载请稍等...", 1.5)
+          .then(() => message.success(res.message + ",即将跳转至登录页", 1.5))
+          .then(() => navigate("/login"), 1.5);
         // 跳转到登录页
-        setTimeout(()=> navigate('/login'), 1000)
-      }else{
+      } else {
         message.error(res.message);
       }
-    })
+    });
   };
   return (
     <div className="login">
@@ -36,6 +61,9 @@ export default function Register() {
         >
           <Form.Item
             name="username"
+            hasFeedback
+            validateStatus={validateStatus}
+            help={helpStatus}
             rules={[
               {
                 required: true,
@@ -47,6 +75,7 @@ export default function Register() {
               size="large"
               placeholder="请输入账号"
               prefix={<UserOutlined />}
+              onBlur={e=>setUsername(e.target.value.replaceAll(' ',''))}
             />
           </Form.Item>
 
@@ -58,6 +87,14 @@ export default function Register() {
                 required: true,
                 message: "请输入密码!",
               },
+              {
+                type:'string',
+                min:6,
+                message:"密码不得少于6位"
+              },
+              {
+                message:"啊啊啊中"
+              }
             ]}
           >
             <Input.Password
@@ -81,11 +118,7 @@ export default function Register() {
                     return Promise.resolve();
                   }
 
-                  return Promise.reject(
-                    new Error(
-                      "您输入的两个密码不匹配!"
-                    )
-                  );
+                  return Promise.reject(new Error("您输入的两个密码不匹配!"));
                 },
               }),
             ]}
