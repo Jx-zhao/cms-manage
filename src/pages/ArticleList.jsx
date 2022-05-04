@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
-import { ArticleListApi } from '../request/api'
-import { List, Avatar, Button, Skeleton,Pagination  } from 'antd';
+import { ArticleListApi,ArticleDelApi } from '../request/api'
+import { List, message, Button, Skeleton,Pagination  } from 'antd';
 import { useNavigate } from 'react-router-dom';
 import Moment from "moment"
 import "./scss/list.min.css"
@@ -28,7 +28,16 @@ const onPaginationChange = (e) =>{
 }
 const handleClick = (id,key) =>{
   if(key === 'edit'){
-    navigate('/edit',{state:{datas:id}})
+    navigate('/edit/'+id,{state:{datas:id}})
+  }else if(key === 'del'){
+    ArticleDelApi({id}).then(res=>{
+      if(res.errCode === 0){
+        message.success(res.message)
+        ArticleListfn();
+      }else{
+        message.error(res.massar);
+      }
+    })
   }
   console.log(id);
 }

@@ -26,6 +26,8 @@ const CollectionCreateForm = ({ visible, onCreate, onCancel,titles,descriptions 
       <Form
         form={form}
         layout="horizontal"
+        labelCol={ {span: 3 }}
+        wrapperCol= { {span: 20} }
         name="form_in_modal"
         initialValues={{
           modifier: 'public',
