@@ -7,7 +7,7 @@ export default function Breadcrumbs(props) {
       margin: "16px 0",
     }}
   >
-    <Breadcrumb.Item>首页</Breadcrumb.Item>
+    <Breadcrumb.Item href="/">首页</Breadcrumb.Item>
     <Breadcrumb.Item>{props.link}</Breadcrumb.Item>
   </Breadcrumb>
   )

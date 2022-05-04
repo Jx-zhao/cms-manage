@@ -12,7 +12,7 @@ function getItem(label, key, icon, children, type) {
   };
 }
 const items = [
-  getItem('查看文章列表', 'list', <BarsOutlined />),
+  getItem('查看文章列表', 'articlelist', <BarsOutlined />),
   getItem('文章编辑', 'edit', <EditOutlined />,),
   getItem('修改资料', 'means', <SettingOutlined />,),
 ];
@@ -25,8 +25,8 @@ const Aside = (props) => {
     let key = path.split('/')[1];
     setDefaultKey(key)
     const navKey = items.filter(item=>item.key === key)
-    props.navSwitch(navKey[0].label)
-  },[])
+    navKey.length?props.navSwitch(navKey[0].label):props.navSwitch("")
+  })
   const onClick = (e) => {
     props.navSwitch(e.domEvent.target.innerText)
     navigate("/"+e.key)

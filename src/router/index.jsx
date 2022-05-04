@@ -1,5 +1,5 @@
 import App from "../App";
-import List from "../pages/List";
+import ArticleList from "../pages/ArticleList";
 import Edit from "../pages/Edit";
 import Means from "../pages/Means";
 import Login from "../pages/Login";
@@ -10,7 +10,7 @@ const BaseRouter = () =>(
   <Router>
     <Routes>
       <Route path="/" element={<App/>}>
-        <Route path="/list" element={<List/>}></Route>
+        <Route path="/articlelist" element={<ArticleList />}></Route>
         <Route path="/edit" element={<Edit/>}></Route>
         <Route path="/means" element={<Means/>}></Route>
       </Route>

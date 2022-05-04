@@ -19,23 +19,23 @@ function App() {
       <Aside navSwitch={navclick}/>
         <Layout
           style={{
-            padding: "20px",
-            flex:1
+            padding: "0 20px 20px",
+            flex:1,
+            
           }}
         >
         <Breadcrumbs link={linkUrl}/>
           <Content
             className="content-background"
             style={{
-              padding: 20,
+              padding:'0 20px 20px',
               margin: 0,
               minHeight: 280,
-              
+              position: 'relative',
             }}
           >
-            <div>
+            {!linkUrl&& <h1>你好, 欢迎回家!!!</h1>}
               <Outlet />
-            </div>
           </Content>
         </Layout>
       </Layout>

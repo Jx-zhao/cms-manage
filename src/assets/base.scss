@@ -5,7 +5,7 @@
 body {
   font-size: 14px;
   font-family: "微软雅黑";
-  background: #efefef;
+  background: #f0f2f5;
   .app {
     height: 100%;
     header {
@@ -72,6 +72,10 @@ body {
     } 
     .content-background {
       background: #fff;
+      position: relative;
+    }
+    #wangeditor{
+      padding:0 30px;
     }
   }
 }
