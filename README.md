@@ -1,5 +1,11 @@
 # cms-manage
 
+### 安装依赖 并运行
+```
+$ npm install
+$ npm run dev
+```
+
 ##### vite 配置服务器代理，vite.config.js
 ```
 export default {
