@@ -83,6 +83,6 @@ import.meta.env.VITE_TOKEN
 ```
 ##### 打包和部署
 1. 打包
-   使用```npm run build```执行打包
+   --->使用```npm run build```执行打包
 2. 部署
-   手动上传dist中的内容到服务器，再配置好nginx当然可以，但是这一过程最好自动化处理，避免前面这些繁琐的操作。我们这里利用github actions实现ci/cd过程。
+   --->手动上传dist中的内容到服务器，再配置好nginx当然可以，但是这一过程最好自动化处理，避免前面这些繁琐的操作。我们这里利用github actions实现ci/cd过程。
