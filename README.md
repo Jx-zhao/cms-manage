@@ -1,6 +1,7 @@
 # cms-manage
 
-//vite 配置服务器代理，vite.config.js
+##### vite 配置服务器代理，vite.config.js
+```
 export default {
   proxy: {
     '/api': {
@@ -10,17 +11,19 @@ export default {
     }
   }
 }
-
-数据mock
-安装依赖
+```
+##### 数据mock
+###### 安装依赖
 ```
 npm i mockjs -S
 npm i vite-plugin-mock cross-env -D
 ```
-引入插件，vite.config.js
+###### 引入插件，vite.config.js
+```
 plugins: [
   createMockServer({
     // close support .ts file
     supportTs: false,
   }),
 ],
+```
