@@ -27,3 +27,40 @@ plugins: [
   }),
 ],
 ```
+###### 设置环境变量，package.json
+```
+"dev": "cross-env NODE_ENV=development vite"
+```
+##### 创建mock文件，mock/test.js
+```
+export default [
+  {
+    url: "/api/users",
+    method: "get",
+    response: req => {
+      return {
+        code: 0,
+        data: [
+          {
+            name: "tom",
+          },
+          {
+            name: "jerry",
+          },
+        ],
+      };
+    },
+  },
+  {
+    url: "/api/post",
+    method: "post",
+    timeout: 2000,
+    response: {
+      code: 0,
+      data: {
+        name: "vben",
+      },
+    },
+  },
+];
+```
