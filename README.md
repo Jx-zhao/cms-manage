@@ -70,3 +70,13 @@ export default [
   },
 ];
 ```
+##### 模式和环境变量
+使用模式做多环境配置，vite serve时模式默认是development，vite build时是production。
+创建配置文件.env.development
+
+```
+VITE_TOKEN=this is token
+```
+代码中读取
+```import.meta.env.VITE_TOKEN```
+
