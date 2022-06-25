@@ -1,5 +1,5 @@
-import React,{useState} from "react";
-import { Outlet } from "react-router-dom";
+import React,{useState,useEffect} from "react";
+import { Outlet,useNavigate } from "react-router-dom";
 import { Layout } from "antd";
 import Footer from "./components/Footer"
 import Header from "./components/Header"
@@ -7,11 +7,19 @@ import Aside from "./components/Aside";
 import Breadcrumbs from "./components/Breadcrumbs"
 
 function App() {
+  const navigate = useNavigate();
   const { Content } = Layout;
   const [linkUrl,setLinkurl] = useState("查看文章列表")
   const navclick = (v)=>{
     setLinkurl(v)
   }
+  useEffect(()=>{
+    //判断是否登录，若为登录跳转到登录页
+    const cmsToken = localStorage.getItem('cms-token');
+    if(!cmsToken) {
+      navigate('/login')
+    }
+  },[])
   return (
     <Layout className="app">
       <Header />
